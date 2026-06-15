@@ -2,7 +2,7 @@
   "expo": {
     "name": "Inventra",
     "slug": "Inventra",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "default",
     "icon": "./assets/images/inventra_logo.png",
     "scheme": "inventra",

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2] - 2026-06-15
+
+### Fixed
+- **Crash on launch (release APK)**: Added `babel.config.js` with `react-native-reanimated/plugin` — `parallax-scroll-view.tsx` uses `useAnimatedStyle` (worklet) which requires the Reanimated Babel plugin; without it, Hermes crashes on launch
+- **Build fix**: Installed correct `babel-preset-expo@~54.0.0` matching Expo SDK 54 (previously resolved wrong version 56)
+
+### Added
+- `babel.config.js` with `presets: ['babel-preset-expo']` and `plugins: ['react-native-reanimated/plugin']`
+
 ## [1.0.1] - 2026-06-15
 
 ### Fixed
