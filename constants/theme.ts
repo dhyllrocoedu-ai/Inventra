@@ -1,53 +1,85 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+export const BrandColors = {
+  primary: '#2563EB',
+  navy: '#0F172A',
+  teal: '#14B8A6',
 
-import { Platform } from 'react-native';
+  success: '#22C55E',
+  warning: '#F59E0B',
+  danger: '#EF4444',
+  info: '#3B82F6',
+} as const;
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+export const DashboardCardColors = {
+  revenue: { bg: '#DBEAFE', accent: '#2563EB' },
+  profit: { bg: '#DCFCE7', accent: '#22C55E' },
+  products: { bg: '#E0F2FE', accent: '#0EA5E9' },
+  lowStock: { bg: '#FEF3C7', accent: '#F59E0B' },
+} as const;
+
+export const StatusColors = {
+  healthy: { bg: '#DCFCE7', text: '#15803D' },
+  warning: { bg: '#FEF3C7', text: '#B45309' },
+  critical: { bg: '#FEE2E2', text: '#B91C1C' },
+} as const;
+
+export const StatusBorders = {
+  healthy: '#22C55E',
+  warning: '#F59E0B',
+  critical: '#EF4444',
+} as const;
+
+export const NeutralColors = {
+  background: '#F8FAFC',
+  secondaryBg: '#F1F5F9',
+  card: '#FFFFFF',
+  border: '#E2E8F0',
+  textPrimary: '#1E293B',
+  textSecondary: '#64748B',
+  textDisabled: '#94A3B8',
+  textInverse: '#FFFFFF',
+} as const;
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: NeutralColors.textPrimary,
+    background: NeutralColors.background,
+    tint: BrandColors.primary,
+    icon: NeutralColors.textSecondary,
+    tabIconDefault: NeutralColors.textDisabled,
+    tabIconSelected: BrandColors.primary,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: '#F8FAFC',
+    background: '#0B1120',
+    tint: BrandColors.primary,
+    icon: '#CBD5E1',
+    tabIconDefault: '#475569',
+    tabIconSelected: BrandColors.primary,
   },
 };
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+export const Fonts = {
+  sans: 'Inter_400Regular' as const,
+  sansMedium: 'Inter_500Medium' as const,
+  sansSemiBold: 'Inter_600SemiBold' as const,
+  sansBold: 'Inter_700Bold' as const,
+  sansExtraBold: 'Inter_800ExtraBold' as const,
+  sansBlack: 'Inter_900Black' as const,
+};
+
+export const FontSizes = {
+  appTitle: 28,
+  sectionTitle: 20,
+  cardValue: 24,
+  body: 14,
+  caption: 12,
+} as const;
+
+export const FontWeights = {
+  regular: '400' as const,
+  medium: '500' as const,
+  semiBold: '600' as const,
+  bold: '700' as const,
+  extraBold: '800' as const,
+  black: '900' as const,
+};
