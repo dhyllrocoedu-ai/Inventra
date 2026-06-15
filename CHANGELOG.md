@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4] - 2026-06-15
+
+### Fixed
+- **Crash on launch (release APK)**: `expo-sqlite@56.0.5` was incompatible with Expo SDK 54 — required `expo.modules.kotlin.types.AnyTypeCache` class missing in SDK 54's `expo-modules-core`. Fixed by installing SDK-matched `expo-sqlite@16.0.10` via `npx expo install expo-sqlite`
+- **Project moved from OneDrive** to `C:\Inventra` — OneDrive reparse points broke Gradle 8.14.3 file snapshotting on Windows
+
 ## [1.0.3] - 2026-06-15
 
 ### Fixed
