@@ -59,7 +59,6 @@ export async function initDb() {
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );`);
 
-  db.execSync(`DROP TABLE IF EXISTS day_summaries;`);
   db.execSync(`CREATE TABLE IF NOT EXISTS day_summaries (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   date TEXT NOT NULL,

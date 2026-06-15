@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2026-06-15
+
+### Fixed
+- **Day summaries data loss on app restart**: Removed `DROP TABLE IF EXISTS day_summaries` from `initDb()` — leftover from schema migration was wiping all summary data every launch
+
 ## [1.0.2] - 2026-06-15
 
 ### Fixed
