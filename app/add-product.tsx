@@ -14,11 +14,12 @@ import {
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { CameraView } from 'expo-camera';
-import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
 import { BrandColors, Fonts, NeutralColors } from '@/constants/theme';
 import { BorderRadius, Shadow, Spacing } from '@/constants/spacing';
+import { useResponsive } from '@/hooks/useResponsive';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ImagePickerField } from '@/components/ImagePicker';
 
@@ -40,6 +41,7 @@ const STOCK_LABELS: Record<StockAction, string> = {
 export default function AddProductScreen() {
   const { productId } = useLocalSearchParams<{ productId?: string }>();
   const isEditing = !!productId;
+  const { header } = useResponsive();
 
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
@@ -188,7 +190,7 @@ export default function AddProductScreen() {
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
           <Ionicons name="close" size={24} color={NeutralColors.textPrimary} />
         </Pressable>
-        <Text style={styles.title}>{isEditing ? 'Edit Product' : 'Add Product'}</Text>
+        <Text style={[styles.title, { fontSize: header.titleSize }]}>{isEditing ? 'Edit Product' : 'Add Product'}</Text>
         <View style={{ width: 32 }} />
       </View>
 

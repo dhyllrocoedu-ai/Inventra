@@ -16,7 +16,7 @@ function severityBorder(severity: number) {
 }
 
 export default function NotificationsScreen() {
-  const { columns: notifColumns, isTablet } = useResponsive();
+  const { columns: notifColumns, isTablet, header } = useResponsive();
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,7 +43,7 @@ export default function NotificationsScreen() {
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
           <Ionicons name="close" size={24} color={NeutralColors.textPrimary} />
         </Pressable>
-        <Text style={styles.title}>Notifications</Text>
+        <Text style={[styles.title, { fontSize: header.titleSize }]}>Notifications</Text>
         <View style={styles.backBtn} />
       </View>
 

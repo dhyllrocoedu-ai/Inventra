@@ -29,7 +29,7 @@ export default function HomeScreen() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const { columns: metricColumns, isTablet, isLandscape } = useResponsive();
+  const { columns: metricColumns, isTablet, isLandscape, header } = useResponsive();
   const cols = isLandscape ? 4 : 2;
 
   const metricCardWidth = useMemo(() => {
@@ -105,9 +105,9 @@ export default function HomeScreen() {
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 80 }]}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
-        <View style={styles.headerRow}>
+        <View style={[styles.headerRow, { marginBottom: header.marginBottom }]}>
           <View>
-            <Text style={styles.title}>Inventra</Text>
+            <Text style={[styles.title, { fontSize: header.titleSize }]}>Inventra</Text>
             <Text style={styles.tagline}>Track Stock. Drive Growth.</Text>
           </View>
           <NotificationBell count={d.lowStockCount} />
@@ -169,7 +169,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Quick Insights</Text>
+          <Text style={[styles.sectionTitle, { fontSize: header.sectionTitleSize }]}>Quick Insights</Text>
 
           <View style={styles.insightRow}>
             <View style={[styles.iconBubble, { backgroundColor: `${BrandColors.warning}22` }]}>

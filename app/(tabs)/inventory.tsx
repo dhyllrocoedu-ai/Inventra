@@ -27,7 +27,7 @@ type Product = {
 
 export default function InventoryScreen() {
   const insets = useSafeAreaInsets();
-  const { columns } = useResponsive();
+  const { columns, header } = useResponsive();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -82,7 +82,7 @@ export default function InventoryScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerRow}>
-          <Text style={styles.title}>Inventory</Text>
+          <Text style={[styles.title, { fontSize: header.titleSize }]}>Inventory</Text>
           <NotificationBell
             count={products.filter((p) => {
               const t = p.minStock && p.minStock > 0 ? p.minStock : 10;

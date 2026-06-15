@@ -96,7 +96,7 @@ const barStyles = StyleSheet.create({
 
 export default function AnalyticsScreen() {
   const insets = useSafeAreaInsets();
-  const { columns: metricColumns, isLandscape } = useResponsive();
+  const { columns: metricColumns, isLandscape, header } = useResponsive();
   const cols = isLandscape ? 4 : 2;
   const [period, setPeriod] = useState<Period>('daily');
   const [data, setData] = useState<AnalyticsData | null>(null);
@@ -186,7 +186,7 @@ export default function AnalyticsScreen() {
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 80 }]}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
-        <Text style={styles.title}>Analytics</Text>
+        <Text style={[styles.title, { fontSize: header.titleSize }]}>Analytics</Text>
 
         <View style={styles.chipsRow}>
           {PERIODS.map((p) => (
@@ -252,14 +252,14 @@ export default function AnalyticsScreen() {
         )}
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Revenue Report</Text>
+          <Text style={[styles.sectionTitle, { fontSize: header.sectionTitleSize }]}>Revenue Report</Text>
           <Text style={styles.bigValue}>
             {loading ? '—' : formatPHP(d.revenue)}
           </Text>
 
           {d.dailyBreakdown.length > 0 && (
             <>
-              <Text style={styles.subSectionTitle}>Daily (Last 7 Days)</Text>
+              <Text style={[styles.subSectionTitle, { fontSize: header.subTitleSize }]}>Daily (Last 7 Days)</Text>
               {d.dailyBreakdown.map((r) => (
                 <SimpleBar
                   key={r.soldAt}
@@ -275,7 +275,7 @@ export default function AnalyticsScreen() {
 
           {d.monthlyBreakdown.length > 0 && (
             <>
-              <Text style={styles.subSectionTitle}>Monthly</Text>
+              <Text style={[styles.subSectionTitle, { fontSize: header.subTitleSize }]}>Monthly</Text>
               {d.monthlyBreakdown.map((r) => (
                 <SimpleBar
                   key={r.month}
@@ -291,7 +291,7 @@ export default function AnalyticsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Top Selling Products ({periodLabel})</Text>
+          <Text style={[styles.sectionTitle, { fontSize: header.sectionTitleSize }]}>Top Selling Products ({periodLabel})</Text>
           {d.topProducts.length === 0 ? (
             <Text style={styles.caption}>No sales yet</Text>
           ) : (
@@ -309,7 +309,7 @@ export default function AnalyticsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Most Profitable Products ({periodLabel})</Text>
+          <Text style={[styles.sectionTitle, { fontSize: header.sectionTitleSize }]}>Most Profitable Products ({periodLabel})</Text>
           {d.mostProfitableProducts.length === 0 ? (
             <Text style={styles.caption}>No data</Text>
           ) : (
@@ -324,7 +324,7 @@ export default function AnalyticsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Low Stock Report</Text>
+          <Text style={[styles.sectionTitle, { fontSize: header.sectionTitleSize }]}>Low Stock Report</Text>
           {d.lowStockProducts.length === 0 ? (
             <Text style={styles.caption}>All good</Text>
           ) : (

@@ -87,7 +87,7 @@ function formatPHP(n: number) {
 
 export default function SalesScreen() {
   const insets = useSafeAreaInsets();
-  const { columns: saleColumns, width: screenWidth, isTablet } = useResponsive();
+  const { columns: saleColumns, width: screenWidth, isTablet, header } = useResponsive();
   const [mode, setMode] = useState<'sale' | 'history'>('sale');
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartLine[]>([]);
@@ -315,7 +315,7 @@ export default function SalesScreen() {
         <View style={styles.overlay}>
           <View style={styles.overlayBackdrop}>
             <ScrollView contentContainerStyle={[styles.checkoutContainer, { paddingTop: insets.top + 20 }]}>
-              <Text style={styles.checkoutTitle}>Receipt Summary</Text>
+              <Text style={[styles.checkoutTitle, { fontSize: header.sectionTitleSize }]}>Receipt Summary</Text>
               <ReceiptPreview
                 receiptNo={nextReceiptNo}
                 lines={receiptLines}
@@ -333,7 +333,7 @@ export default function SalesScreen() {
       ) : (
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.title}>Sales</Text>
+            <Text style={[styles.title, { fontSize: header.titleSize }]}>Sales</Text>
           </View>
 
           <View style={styles.toggleRow}>
@@ -587,7 +587,7 @@ export default function SalesScreen() {
       <Modal visible={showDaySummary} transparent animationType="fade">
         <Pressable style={styles.modalOverlay} onPress={() => setShowDaySummary(false)}>
           <Pressable style={styles.summaryCard} onPress={() => {}}>
-            <Text style={styles.summaryTitle}>Day Summary</Text>
+            <Text style={[styles.summaryTitle, { fontSize: header.sectionTitleSize }]}>Day Summary</Text>
             {daySummary && (
               <>
                 <Text style={styles.summaryDate}>{daySummary.date}</Text>
